@@ -15,6 +15,7 @@ const int CLM = 3;
 void DisplayBoard(char* ptr);
 bool GameOver(char* ptr);
 void ClaimSpace(char token, char input, char * ptr);
+void DisplayMenu_Main();
 
 int main()
 {
@@ -34,6 +35,7 @@ int main()
     DisplayBoard(board_ptr);
     GameOver(board_ptr);
     ClaimSpace(tokenX, input, board_ptr);
+    DisplayMenu_Main();
 
     return 0;
 }
@@ -257,4 +259,23 @@ void ClaimSpace(char token, char input, char * ptr)
     {
         cout << "Invalid choice." << endl;
     }
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays main menu
+*
+******************************************************************************/
+void DisplayMenu_Main()
+{
+    cout << "\n\n" << "TIC TAC TOURNAMENT" << endl;
+    cout << "\nMain Menu" << "\n---------" << endl;
+    cout << "1) New Game\n" <<
+        "2) High Scores\n" <<
+        "3) Instructions\n" <<
+        "4) Exit\n" << endl;
+    cout << "Selection: ";
 }
