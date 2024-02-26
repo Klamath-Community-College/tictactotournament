@@ -16,6 +16,8 @@ bool GameOver(char* ptr, char difficulty);
 void ClaimSpace(char token, char input, char * ptr);
 void DisplayMenu_Main();
 void DisplayMenu_Inst();
+void DisplayInst_Basic();
+void DisplayInst_New();
 void DisplayMenu_Scores();
 
 int main()
@@ -38,7 +40,7 @@ int main()
     *           3. Back
     *       2. Instructions
     *           1. How to Play
-    *                   -> Easy (non-combat), Normal (combat w/counter), Hard (immediate combat)
+    *                   Easy (non-combat), Normal (combat w/counter), Hard (immediate combat)
     *           2. New Feature (combat)
     *                   -> stats array, class differential, #wins
     *                   -> AI as unique?
@@ -372,4 +374,43 @@ void DisplayMenu_Scores()
         "2) Avatar wins\n" <<
         "3) Back to Main Menu\n" << endl;
     cout << "Selection: ";
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays Instructions for basic Tic Tac Toe
+*
+******************************************************************************/
+void DisplayInst_Basic()
+{
+    cout << "\n\n\t\tRules of Tic Tac Toe" << endl;
+    cout << "\nThe rules of Tic Tac Toe are as follows:"
+        << "\n\tA player can put only a single letter X or O in the 3 x 3 grid in each chance."
+        << "\n\tBoth players will get chances alternatively one after another till someone wins or draws."
+        << "\n\tTo win this game, the player must create a horizontal, vertical, or diagonal line consisting of three same letters."
+        << "\n\tThe game is drawn, if all grids are filled with X or O letters but no line is made."
+        << "\n\nThis is the basic game and what will be played on the Easy setting, for other difficulties see the New Features menu."
+        << endl;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays Instructions for New Feature (Combat)
+*
+******************************************************************************/
+void DisplayInst_New()
+{
+    cout << "\n\n\t\tRules of Tic Tac Tournament" << endl;
+    cout << "\nThe rules of Tic Tac Tournament change as follows:"
+        << "\n\tEach player will choose a champion to serve as their avatar in the game."
+        << "\n\tClaimed squares may be contested at point based on difficulty selected."
+        << "\n\t\tEasy - no combat \n\t\tNormal - combat can begin after # turns \n\t\tHard - Combat can start immediately" << endl;
+
+    // describe champions, bonuses
 }
