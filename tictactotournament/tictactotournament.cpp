@@ -9,21 +9,59 @@ using std::endl;
 #include <crtdbg.h>
 
 // Set board size
-const int ROW = 3;
-const int CLM = 3;
+const int BOARD = 3;
 
 void DisplayBoard(char* ptr);
-bool GameOver(char* ptr);
+bool GameOver(char* ptr, char difficulty);
 void ClaimSpace(char token, char input, char * ptr);
 void DisplayMenu_Main();
+void DisplayMenu_Inst();
+void DisplayMenu_Scores();
 
 int main()
 {
     // Run this program using "Start Debugging"
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-    // Create board[ROW][CLM] array
-    char board[ROW][CLM] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
+    /**********************************************************************************
+    * Game Logic
+    * 
+    *   Splash screen?
+    *   Main Menu (class?)
+    *       1. Play
+    *           1. New Game
+    *               class Player
+    *                   -> token, avatar, #wins, AI
+    *               class game/board
+    *                   -> board, Difficulty/counter, player1, player2
+    *           2. Continue Playing
+    *           3. Back
+    *       2. Instructions
+    *           1. How to Play
+    *                   -> Easy (non-combat), Normal (combat w/counter), Hard (immediate combat)
+    *           2. New Feature (combat)
+    *                   -> stats array, class differential, #wins
+    *                   -> AI as unique?
+    *           3. Back
+    *       3. High Scores
+    *           1. Player (#wins)
+    *           2. Avatar (#wins/level?)
+    *           3. Back
+    *       4. Exit
+    * 
+    * Required Variables
+    * 
+    *   ENUM Menu
+    *   ENUM Tokens?
+    *   int countdown (for diff/combat)
+    *   int spaceSelection (for input)
+    *   char abcInput[3] (for score inits)
+    *   int wins (for score accum)
+    *   
+    ***********************************************************************************/
+
+    // Create board array
+    char board[BOARD][BOARD] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
 
     // Assign pointer to board[]
     char * board_ptr = board[0];
@@ -31,24 +69,17 @@ int main()
     char tokenX = 'X';
     char tokenO = 'O';
     char input = '\0';
+    char difficulty = 'E';
 
     DisplayBoard(board_ptr);
-    GameOver(board_ptr);
+    GameOver(board_ptr, difficulty);
     ClaimSpace(tokenX, input, board_ptr);
     DisplayMenu_Main();
+    
 
     return 0;
 }
 
-/******************************************************************************
-* Entry: <what is passed in>
-*
-* Exit: <what is returned>
-*
-* Purpose: <description of function>
-*
-*
-******************************************************************************/
 
 /******************************************************************************
 * Entry: Pointer to gameBoard array (board_ptr)
@@ -60,37 +91,37 @@ int main()
 ******************************************************************************/
 void DisplayBoard(char* ptr)
 {
-    for (int row = 0; row < ROW; row++)                                            // loop for displaying rows
+    for (int row = 0; row < BOARD; row++)                                            // loop for displaying rows
     {
-        for (int column = 0; column < CLM; column++)                               // loop for displaying columns
+        for (int column = 0; column < BOARD; column++)                               // loop for displaying columns
         {
             cout << ' ' << *(ptr + column) << ' ';                                 // print array contents centered in space
             
-            if (column < CLM-1)                                                    // conditional for printing vertical separators
+            if (column < BOARD-1)                                                    // conditional for printing vertical separators
             {
                 cout << '|';
             }
 
         }
 
-        if (row < ROW - 1)                                                         // conditional for printing horizontal separators
+        if (row < BOARD - 1)                                                         // conditional for printing horizontal separators
         {
             cout << "\n-----------\n";
         }
         
-        ptr = ptr+ROW;                                                             // increment board_ptr to next row of columns
+        ptr = ptr+BOARD;                                                             // increment board_ptr to next row of columns
     }
 }
 
 /******************************************************************************
-* Entry: Pointer to gameBoard array (board_ptr)
+* Entry: Pointer to gameBoard array (board_ptr), char difficulty
 *
 * Exit: Bool result
 *
 * Purpose: Computes if game has been won
 *
 ******************************************************************************/
-bool GameOver(char* ptr)
+bool GameOver(char* ptr, char difficulty)
 {
     bool result = false;
 
@@ -108,6 +139,18 @@ bool GameOver(char* ptr)
     {
         // if win is diagonal
         result = true;
+    }
+    else if (ptr[0] == 'x' || 'o' && ptr[1] == 'x' || 'o' && ptr[2] == 'x' || 'o' && ptr[3] == 'x' || 'o' && ptr[4] == 'x' || 'o' &&
+        ptr[5] == 'x' || 'o' && ptr[6] == 'x' || 'o' && ptr[7] == 'x' || 'o' && ptr[8] == 'x' || 'o' && difficulty == 'E')
+    {
+        // if all spaces filled on easy (non-combat)
+        result = true;
+        cout << "All spaces are filled - game is a draw!";
+    }
+    else 
+    {
+        // if all spaces filled not on easy (non-combat)
+        cout << "All spaces are filled - only victory by combat remains!";
     }
 
     return result;
@@ -273,9 +316,60 @@ void DisplayMenu_Main()
 {
     cout << "\n\n" << "TIC TAC TOURNAMENT" << endl;
     cout << "\nMain Menu" << "\n---------" << endl;
-    cout << "1) New Game\n" <<
+    cout << "1) Play Game\n" <<
         "2) High Scores\n" <<
         "3) Instructions\n" <<
         "4) Exit\n" << endl;
+    cout << "Selection: ";
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays play menu
+*
+******************************************************************************/
+void DisplayMenu_Play()
+{
+    cout << "\n\nPlay Menu" << "\n---------" << endl;
+    cout << "1) New Game\n" <<
+        "2) Continue Playing\n" <<
+        "3) Back to Main Menu\n" << endl;
+    cout << "Selection: ";
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays Instruction menu
+*
+******************************************************************************/
+void DisplayMenu_Inst()
+{
+    cout << "\n\nInstruction Menu" << "\n---------" << endl;
+    cout << "1) How to Play\n" <<
+        "2) New Feature - Combat\n" <<
+        "3) Back to Main Menu\n" << endl;
+    cout << "Selection: ";
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays Scores menu
+*
+******************************************************************************/
+void DisplayMenu_Scores()
+{
+    cout << "\n\n High Scores Menu" << "\n---------" << endl;
+    cout << "1) Player wins\n" <<
+        "2) Avatar wins\n" <<
+        "3) Back to Main Menu\n" << endl;
     cout << "Selection: ";
 }
