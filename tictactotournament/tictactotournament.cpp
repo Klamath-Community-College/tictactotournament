@@ -65,19 +65,45 @@ int main()
     // Create board array
     char board[BOARD][BOARD] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
 
-    // Assign pointer to board[]
-    char * board_ptr = board[0];
-
     char tokenX = 'X';
     char tokenO = 'O';
     char input = '\0';
     char difficulty = 'E';
+    bool continuePlaying = true;
+    bool endGame = false;
+    bool fin = false;
 
-    DisplayBoard(board_ptr);
+    // Assign pointer to board[]
+    char * board_ptr = board[0];
+
+    
     GameOver(board_ptr, difficulty);
     ClaimSpace(tokenX, input, board_ptr);
     DisplayMenu_Main();
     
+    //Game Loop
+    while (continuePlaying)
+    {
+        // draw board
+        DisplayBoard(board_ptr);
+
+        // choose space
+        while (endGame != true)
+        {
+            // get input
+            cout << "Enter choice of space (1-9) to claim: ";
+            cin >> input;
+
+            // check space (token needs converted to classes)
+            ClaimSpace(token, input, board_ptr);
+
+            // check game
+            fin = GameOver(board_ptr, difficulty);
+
+            // change player (needs conversion to classes)
+            player = (player == 'X') ? 'O' : 'X';
+        }
+    }
 
     return 0;
 }
