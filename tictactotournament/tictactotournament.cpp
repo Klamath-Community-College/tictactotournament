@@ -29,13 +29,13 @@ int main()
     * Game Logic
     * 
     *   Splash screen?
-    *   Main Menu (class?)
+    *   Main Menu
     *       1. Play
     *           1. New Game
     *               class Player
-    *                   -> token, avatar, #wins, AI
+    *                   -> token, avatar, #wins, AI, name?
     *               class game/board
-    *                   -> board, Difficulty/counter, player1, player2
+    *                   -> board, Difficulty, counter, player1, player2
     *           2. Continue Playing
     *           3. Back
     *       2. Instructions
@@ -439,4 +439,9 @@ void DisplayInst_New()
         << "\n\t\tEasy - no combat \n\t\tNormal - combat can begin after # turns \n\t\tHard - Combat can start immediately" << endl;
 
     // describe champions, bonuses
+    cout << "\n\nEach champion has four varying scores - Power, Mental, Agility and Health. The different champions benefit from these "
+        << "scores in different ways: \n\tThe Warrior relies on Power and gains this bonus to damage on a successful attack."
+        << "\n\tThe Adept relies on Mental and gains this bonus to attack against an opponent's Agility."
+        << "\n\tThe Rogue relies on Agility and applies this bonus twice when deciding the target number his opponent must hit."
+        << endl;
 }
