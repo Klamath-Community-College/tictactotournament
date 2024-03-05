@@ -10,7 +10,22 @@ class Player
 		bool m_Player;			// for player or AI
 
 	public:
+		// manager functions
+		Player();
+		Player(bool player, char token, int wins, char champ);
+		~Player();
 
+		// getters
+		bool GetPlayer() const;
+		char GetToken() const;
+		int GetWins() const;
+		char GetChampion() const;
+
+		// setters
+		void SetPlayer(bool player);
+		void SetToken(char token);
+		void SetWins(int wins);
+		void SetChampion(char champ);
 
 };
 

@@ -6,7 +6,7 @@ using std::endl;
 
 // Place any other #includes here
 #include "Game.h"
-
+#include "Player.h"
 
 #include <crtdbg.h>
 
@@ -55,12 +55,10 @@ int main()
     * Required Variables
     * 
     *   ENUM Menu
-    *   ENUM Tokens?
     *   int countdown (for diff/combat)
     *   int spaceSelection (for input)
     *   char abcInput[3] (for score inits)
-    *   int wins (for score accum)
-    *   
+    *      
     ***********************************************************************************/
 
     // Create board array
@@ -69,8 +67,6 @@ int main()
     // Assign pointer to board[]
     char * board_ptr = board[0];
 
-    char tokenX = 'X';
-    char tokenO = 'O';
     char input = '\0';
    
     bool continuePlaying = true;
