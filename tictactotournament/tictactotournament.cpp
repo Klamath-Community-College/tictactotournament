@@ -5,12 +5,13 @@ using std::cin;
 using std::endl;
 
 // Place any other #includes here
+#include "Game.h"
+
 
 #include <crtdbg.h>
 
-// Set board size
-const int BOARD = 3;
 
+const int BOARD = 3;
 void DisplayBoard(char* ptr);
 bool GameOver(char* ptr, char difficulty);
 void ClaimSpace(char token, char input, char * ptr);
@@ -65,16 +66,18 @@ int main()
     // Create board array
     char board[BOARD][BOARD] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
 
+    // Assign pointer to board[]
+    char * board_ptr = board[0];
+
     char tokenX = 'X';
     char tokenO = 'O';
     char input = '\0';
-    char difficulty = 'E';
+   
     bool continuePlaying = true;
     bool endGame = false;
     bool fin = false;
 
-    // Assign pointer to board[]
-    char * board_ptr = board[0];
+
 
     
     GameOver(board_ptr, difficulty);
