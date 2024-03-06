@@ -38,6 +38,7 @@ int main()
     *               class game/board
     *                   -> board, Difficulty, counter, player1, player2
     *           2. Continue Playing
+    *                   -> link list for consecutive games?
     *           3. Back
     *       2. Instructions
     *           1. How to Play
@@ -52,17 +53,30 @@ int main()
     *           3. Back
     *       4. Exit
     * 
-    * Required Variables
     * 
-    *   ENUM Menu
-    *   int countdown (for diff/combat)
-    *   int spaceSelection (for input)
-    *   char abcInput[3] (for score inits)
+    * Combat Logic
+    *       Combat(int attacker, int defender, int space)       // change int to Player?
+    *       {
+    *           while (attacker.health != 0 || defender.health != 0)
+    *           {
+    *               attacker.att (rng+stat) > defender.def (stat) ? def.health -= damage : def.health -= 0
+    *               defender.att (rng+stat) > attacker.def (stat) ? att.health -= damage : att.health -= 0
+    *           }
+    *           
+    *           if (attacker.health != 0)
+    *           {
+    *               space = attacker.token
+    *               cout << "The attacker has won and space is claimed!" << endl;
+    *           }
+    *           else
+    *           {
+    *               cout << "The defender has won and space is kept!" << endl;
+    *           }
     *      
     ***********************************************************************************/
 
     // Create board array
-    char board[BOARD][BOARD] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
+    char board[BOARD][BOARD] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };       // move to Game?
 
     // Assign pointer to board[]
     char * board_ptr = board[0];
@@ -76,8 +90,8 @@ int main()
 
 
     
-    GameOver(board_ptr, difficulty);
-    ClaimSpace(tokenX, input, board_ptr);
+    GameOver(board_ptr, difficulty);                    // move to Game
+    ClaimSpace(tokenX, input, board_ptr);               // move to Game
     DisplayMenu_Main();
     
     //Game Loop

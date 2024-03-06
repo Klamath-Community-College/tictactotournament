@@ -1,6 +1,20 @@
 #pragma once
 // Class for player pvp over claimed space
 
+/***************************************************************************************
+* 
+*	Stat bonus = (Stat-10)/2
+* 
+*	Compare Attack vs Defense(10+Agility Bonus), Damage vs Health(10+Health bonus)
+* 
+*	Warrior - Power Bonus to Damage
+*	Adept   - Mental Bonus to Attack
+*	Rogue   - Agility Bonus to Defense (in addition to normal)
+* 
+*	Should champions be initialized at start or with new game?
+*
+***************************************************************************************/
+
 class Champion
 {
 	private:
@@ -8,6 +22,7 @@ class Champion
 		int m_Mental;
 		int m_Agility;
 		int m_Health;
+		// stats for attack, damage and defense?
 		int m_TotalWins;
 		char m_Role;			// W-arrior, A-dept, R-ogue, B-beg(AI)?
 
