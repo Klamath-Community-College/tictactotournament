@@ -31,5 +31,12 @@ class Game
 		void SetDifficulty(char diff);
 		void SetCountdown(int count);
 		void SetTracker(int track);
+
+		bool TestDraw();
+		bool GameOver();
+		void ClaimSpace(Player player, char input);
+		void DisplayBoard(char* ptr);
+		void DisplayMenu_Main();
+		void PlayGame();
 };
 
