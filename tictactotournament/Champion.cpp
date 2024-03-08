@@ -35,6 +35,44 @@ Champion::Champion(int power, int mental, int agility, int health, int wins) : m
 *
 * Exit: Nothing
 *
+* Purpose: Copy constructor, creates new object by copying properties
+*
+******************************************************************************/
+Champion::Champion(Champion& copy)
+{
+	m_Power = copy.m_Power;
+	m_Mental = copy.m_Mental;
+	m_Agility = copy.m_Agility;
+	m_Health = copy.m_Health;
+	m_TotalWins = copy.m_TotalWins;
+	m_Role = copy.m_Role;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Operator =
+*
+******************************************************************************/
+Champion Champion::operator=(Champion& rhs)
+{
+	m_Power = rhs.m_Power;
+	m_Mental = rhs.m_Mental;
+	m_Agility = rhs.m_Agility;
+	m_Health = rhs.m_Health;
+	m_TotalWins = rhs.m_TotalWins;
+	m_Role = rhs.m_Role;
+
+	return *this;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
 * Purpose: Destructor
 *
 ******************************************************************************/

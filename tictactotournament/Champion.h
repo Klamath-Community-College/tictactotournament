@@ -30,6 +30,8 @@ class Champion
 		// manager functions
 		Champion();
 		Champion(int power, int mental, int agility, int health, int wins);
+		Champion(Champion& copy);
+		Champion operator=(Champion& rhs);
 		~Champion();
 
 		// getters

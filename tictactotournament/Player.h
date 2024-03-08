@@ -13,6 +13,8 @@ class Player
 		// manager functions
 		Player();
 		Player(bool player, char token, int wins, char champ);
+		Player(Player& copy);
+		Player operator=(Player& rhs);
 		~Player();
 
 		// getters

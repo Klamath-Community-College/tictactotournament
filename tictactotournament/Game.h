@@ -16,6 +16,8 @@ class Game
 		// manager functions
 		Game();											// default ctor
 		Game(char diff, int count, int track);			// 3-arg ctor
+		Game(Game& copy);
+		Game operator=(Game& rhs);
 		~Game();										// dtor
 
 		// getters

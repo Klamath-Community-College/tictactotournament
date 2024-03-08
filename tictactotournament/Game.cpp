@@ -33,7 +33,39 @@ Game::Game(char diff, int count, int track) : m_Difficulty('E'), m_Countdown(0),
 *
 * Exit: Nothing
 *
-* Purpose: Destructor
+* Purpose: Copy ctor, creates new game by copying settings
+*
+******************************************************************************/
+Game::Game(Game& copy)
+{
+	m_Difficulty = copy.m_Difficulty;
+	m_Countdown = copy.m_Countdown;
+	m_Tracker = copy.m_Tracker;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Copy assignment
+*
+******************************************************************************/
+Game Game::operator=(Game& rhs)
+{
+	m_Difficulty = rhs.m_Difficulty;
+	m_Countdown = rhs.m_Countdown;
+	m_Tracker = rhs.m_Tracker;
+
+	return *this;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Destructor, cleans up any dynamically created memory
 *
 ******************************************************************************/
 Game::~Game()

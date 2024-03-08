@@ -33,7 +33,41 @@ Player::Player(bool player, char token, int wins, char champ) : m_Player(true), 
 *
 * Exit: Nothing
 *
-* Purpose: Deconstructor
+* Purpose: Copy constructor, creates new object by copying variables
+*
+******************************************************************************/
+Player::Player(Player& copy)
+{
+	m_Player = copy.m_Player;
+	m_Token = copy.m_Token;
+	m_Wins = copy.m_Wins;
+	m_Champion = copy.m_Champion;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Operator =
+*
+******************************************************************************/
+Player Player::operator=(Player& rhs)
+{
+	m_Player = rhs.m_Player;
+	m_Token = rhs.m_Token;
+	m_Wins = rhs.m_Wins;
+	m_Champion = rhs.m_Champion;
+
+	return *this;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Destructor, cleans up dynamically created memory
 *
 ******************************************************************************/
 Player::~Player()
