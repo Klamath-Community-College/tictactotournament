@@ -402,26 +402,6 @@ void Game::DisplayBoard(char* ptr)
     }
 }
 
-/******************************************************************************
-* Entry: Nothing
-*
-* Exit: Nothing
-*
-* Purpose: Displays main menu
-*
-******************************************************************************/
-void Game::DisplayMenu_Main()
-{
-    cout << "\n\n" << "TIC TAC TOURNAMENT" << endl;
-    cout << "\nMain Menu" << "\n---------" << endl;
-    cout << "1) New Game\n" <<
-        "2) Continue Playing\n" <<
-        "3) High Scores\n" <<
-        "4) Instructions\n" <<
-        "5) Exit\n" << endl;
-    cout << "Selection: ";
-}
-
 void Game::PlayGame()
 {
     char input = '\0';

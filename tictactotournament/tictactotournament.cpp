@@ -5,16 +5,18 @@ using std::cin;
 using std::endl;
 
 // Place any other #includes here
-#include "Game.h"
-#include "Player.h"
-#include "Champion.h"
+//#include "Game.h"
+//#include "Player.h"
+//#include "Champion.h"
 
 #include <crtdbg.h>
 
+void DisplayMenu_Main();
 void DisplayMenu_Inst();
 void DisplayInst_Basic();
 void DisplayInst_New();
 void DisplayMenu_Scores();
+char GetInput();
 
 int main()
 {
@@ -70,6 +72,60 @@ int main()
     *
     ***********************************************************************************/
 
+    bool exit = false;
+    char input = '\0';
+
+    while (!exit)
+    {
+        DisplayMenu_Main();
+        input = GetInput();
+
+        if (input >= '1' && input <= '5')
+        {
+            switch (input)
+            {
+            case '1':
+
+                break;
+            case '2':
+
+                break;
+            case '3':
+                DisplayMenu_Scores();
+                break;
+            case '4':
+                DisplayMenu_Inst();
+                break;
+            case '5':
+                exit = true;
+                break;
+            }
+        }
+        else
+        {
+            cout << "Invalid choice." << endl;
+        }
+    }
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Nothing
+*
+* Purpose: Displays main menu
+*
+******************************************************************************/
+void DisplayMenu_Main()
+{
+    cout << "\n\n" << "TIC TAC TOURNAMENT" << endl;
+    cout << "\nMain Menu" << "\n---------" << endl;
+    cout << "1) New Game\n" <<
+        "2) Continue Playing\n" <<
+        "3) High Scores\n" <<
+        "4) Instructions\n" <<
+        "5) Exit\n" << endl;
+    cout << "Selection: ";
 }
 
 /******************************************************************************
@@ -87,6 +143,24 @@ void DisplayMenu_Inst()
         "2) New Feature - Combat\n" <<
         "3) Back to Main Menu\n" << endl;
     cout << "Selection: ";
+
+    char input = GetInput();
+
+    if (input != '3')
+    {
+        if (input == '1')
+        {
+            DisplayInst_Basic();
+        }
+        else if (input == '2')
+        {
+            DisplayInst_New();
+        }
+        else
+        {
+            cout << "Invalid choice." << endl;
+        }
+    }
 }
 
 /******************************************************************************
@@ -148,4 +222,31 @@ void DisplayMenu_Scores()
         "2) Avatar wins\n" <<
         "3) Back to Main Menu\n" << endl;
     cout << "Selection: ";
+
+    char input = GetInput();
+
+    while (input != '3')
+    {
+        if (input == '1')
+        {
+            // file i/o for player wins
+            cout << "Player wins will display after games have been played." << endl;
+        }
+        else if (input == '2')
+        {
+            // file i/o for avatar wins
+            cout << "Champion wins will display after games have been played." << endl;
+        }
+        else
+        {
+            cout << "Invalid choice." << endl;
+        }
+    }
+}
+
+char GetInput()
+{
+    char temp_input = '\0';
+    cin >> temp_input;
+    return temp_input;
 }
