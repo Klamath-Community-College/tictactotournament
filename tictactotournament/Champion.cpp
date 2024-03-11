@@ -1,4 +1,7 @@
 #include "Champion.h"
+#include "Player.h"
+#include <cstdlib>
+#include <ctime>
 
 /******************************************************************************
 * Entry: Nothing
@@ -10,6 +13,23 @@
 ******************************************************************************/
 Champion::Champion() : m_Power(8), m_Mental(8), m_Agility(8), m_Health(8), m_TotalWins(0), m_Role('\0')
 {
+	// generate stats
+	m_Power = GenerateRNG(3, 18);
+	m_Mental = GenerateRNG(3, 18);
+	m_Agility = GenerateRNG(3, 18);
+	m_Health = GenerateRNG(3, 18);
+
+	// if warrior apply power to damage
+	m_Role == 'W' ? m_DMG = (m_Power - 10) / 2 : m_DMG = 0;
+
+	// if adept apply mental to attack
+	m_Role == 'A' ? m_ATT = (m_Mental - 10) / 2 : m_ATT = 0;
+
+	// if rogue apply agility to armor twice, if not apply once
+	m_Role == 'R' ? m_AC = ((m_Agility - 10) / 2) * 2 : (m_Agility - 10) / 2;
+
+	// initialize health pool and adjust for health bonus
+	m_HP = 8 + ((m_Health - 10) / 2);
 }
 
 /******************************************************************************
@@ -135,6 +155,58 @@ int Champion::GetHealth() const
 /******************************************************************************
 * Entry: Nothing
 *
+* Exit: m_ATT
+*
+* Purpose: Returns value of attack bonus
+*
+******************************************************************************/
+int Champion::GetATT() const
+{
+	return m_ATT;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: m_DMG
+*
+* Purpose: Returns value of damage bonus
+*
+******************************************************************************/
+int Champion::GetDMG() const
+{
+	return m_DMG;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: m_AC
+*
+* Purpose: Returns value of Armor class
+*
+******************************************************************************/
+int Champion::GetAC() const
+{
+	return m_AC;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: m_HP
+*
+* Purpose: Returns value of Health Pool
+*
+******************************************************************************/
+int Champion::GetHP() const
+{
+	return m_HP;
+}
+
+/******************************************************************************
+* Entry: Nothing
+*
 * Exit: m_TotalWins
 *
 * Purpose: Returns value of Total wins accrued by role.
@@ -234,4 +306,86 @@ void Champion::SetTotalWins(int wins)
 void Champion::SetRole(char role)
 {
 	m_Role = role;
+}
+
+/******************************************************************************
+* Entry: int att
+*
+* Exit: Nothing
+*
+* Purpose: Sets value of attack bonus
+*
+******************************************************************************/
+void Champion::SetATT(int att)
+{
+	m_ATT = att;
+}
+
+/******************************************************************************
+* Entry: int dmg
+*
+* Exit: Nothing
+*
+* Purpose: Sets value of damage bonus
+*
+******************************************************************************/
+void Champion::SetDMG(int dmg)
+{
+	m_DMG = dmg;
+}
+
+/******************************************************************************
+* Entry: int ac
+*
+* Exit: Nothing
+*
+* Purpose: Sets value of armor class
+*
+******************************************************************************/
+void Champion::SetAC(int ac)
+{
+	m_AC = ac;
+}
+
+/******************************************************************************
+* Entry: int hp
+*
+* Exit: Nothing
+*
+* Purpose: Sets value of health pool
+*
+******************************************************************************/
+void Champion::SetHP(int hp)
+{
+	m_HP = hp;
+}
+
+void Champion::ChallengeSpace(Player defender, Player challenger, int space)
+{
+	int tempAttack = 0;
+
+	while (defender.GetChampion.hp != 0 || challenger.GetChampion.hp != 0)
+	{
+		tempAttack = challenger.GetChampion.Att + GenerateRNG(1, 6);
+		tempAttack > defender.GetChampion.AC ? defender.GetChampion.HP -= challenger.GetChampion.DMG : 0;
+
+		tempAttack = defender.GetChampion.Att + GenerateRNG(1, 6);
+		tempAttack > challenger.GetChampion.AC ? challenger.GetChampion.HP -= defender.GetChampion.DMG : 0;
+	}
+
+	if (defender.GetChampion.hp == 0)
+	{
+		// set space to attacker's token
+	}
+}
+
+int GenerateRNG(int min, int max)
+{
+	// Providing a seed value
+	srand((unsigned)time(NULL));
+
+	// Get a random number
+	int random = min + (rand() % max);
+
+	return random;
 }

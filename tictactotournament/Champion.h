@@ -22,7 +22,10 @@ class Champion
 		int m_Mental;
 		int m_Agility;
 		int m_Health;
-		// stats for attack, damage and defense?
+		int m_ATT;
+		int m_DMG;
+		int m_AC;
+		int m_HP;
 		int m_TotalWins;
 		char m_Role;			// W-arrior, A-dept, R-ogue, B-beg(AI)?
 
@@ -41,6 +44,10 @@ class Champion
 		int GetHealth() const;
 		int GetTotalWins() const;
 		int GetRole() const;
+		int GetATT() const;
+		int GetDMG() const;
+		int GetAC() const;
+		int GetHP()const;
 
 		// setters
 		void SetPower(int power);
@@ -49,6 +56,12 @@ class Champion
 		void SetHealth(int health);
 		void SetTotalWins(int wins);
 		void SetRole(char role);
+		void SetATT(int att);
+		void SetDMG(int dmg);
+		void SetAC(int ac);
+		void SetHP(int hp);
 
+		void ChallengeSpace(Player defender, Player challenger, int space);
+		int GenerateRNG(int min, int max);
 };
 
