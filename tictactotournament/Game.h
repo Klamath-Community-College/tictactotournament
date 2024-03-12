@@ -8,6 +8,7 @@ class Game
 		char m_Difficulty;		// to set game type
 		int m_Countdown;		// for PVP option
 		int m_Tracker;			// for tracking consecutive games
+		char m_Board[3][3] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
 
 	public:
 		// manager functions
@@ -21,11 +22,13 @@ class Game
 		char GetDifficulty() const;
 		int GetCountdown() const;
 		int GetTracker() const;
+		char GetSpace(int space) const;
 
 		// setters
 		void SetDifficulty(char diff);
 		void SetCountdown(int count);
 		void SetTracker(int track);
+		void SetSpace(int space, Player player);
 
 		bool TestDraw();
 		bool GameOver();
