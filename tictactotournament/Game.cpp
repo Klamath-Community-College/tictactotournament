@@ -435,6 +435,9 @@ void Game::PlayGame()
     bool endGame = false;
     bool fin = false;
     Game newGame;
+    Player player1;
+    Player player2;
+    Champion baseChamp;
 
     //Game Loop
     while (continuePlaying)
@@ -480,18 +483,18 @@ void Game::PlayGame()
             // player 2 (AI)
             Player player2(false, '\0', 0, 'B');
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
-            input = Champion.GenerateRNG(1, 3);
+            input = baseChamp.GenerateRNG(1, 3);
             if (input == 1)
             {
-                player2.SetChampion = 'W';
+                player2.SetChampion('W');
             }
             else if (input == 2)
             {
-                player2.SetChampion = 'A';
+                player2.SetChampion('A');
             }
             else
             {
-                player2.SetChampion = 'R';
+                player2.SetChampion('R');
             }
 
         }
@@ -541,5 +544,4 @@ void Game::PlayGame()
             fin = GameOver();
         }
     }
-
 }
