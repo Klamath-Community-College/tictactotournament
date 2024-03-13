@@ -5,9 +5,9 @@ using std::cin;
 using std::endl;
 
 // Place any other #includes here
-//#include "Game.h"
-//#include "Player.h"
-//#include "Champion.h"
+#include "Game.h"
+#include "Player.h"
+#include "Champion.h"
 
 #include <crtdbg.h>
 
@@ -85,7 +85,7 @@ int main()
             switch (input)
             {
             case '1':
-
+                Game::PlayGame;
                 break;
             case '2':
 

@@ -1,10 +1,12 @@
 #pragma once
+#include "Champion.h"
+
 // Class for creating and maintaining instance(s) of players including AI
 
 class Player
 {
 	private:
-		char m_Champion;		// chosen champion W, A or R
+		Champion m_Champion;	// create instance of champion class
 		int m_Wins;				// for tracking total wins
 		char m_Token;			// X or O
 		bool m_Player;			// for player or AI
@@ -12,7 +14,7 @@ class Player
 	public:
 		// manager functions
 		Player();
-		Player(bool player, char token, int wins, char champ);
+		Player(bool player, char token, int wins);
 		Player(Player& copy);
 		Player operator=(Player& rhs);
 		~Player();
@@ -21,13 +23,13 @@ class Player
 		bool GetPlayer() const;
 		char GetToken() const;
 		int GetWins() const;
-		char GetChampion() const;
+		Champion GetChampion() const;
 
 		// setters
 		void SetPlayer(bool player);
 		void SetToken(char token);
 		void SetWins(int wins);
-		void SetChampion(char champ);
+		void SetChampion(Champion champ);
 
 };
 

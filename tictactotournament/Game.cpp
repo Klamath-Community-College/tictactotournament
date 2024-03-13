@@ -117,13 +117,20 @@ int Game::GetTracker() const
 	return m_Tracker;
 }
 
+/******************************************************************************
+* Entry: int space
+*
+* Exit: contents of space
+*
+* Purpose: Sets difficulty value for game
+*
+******************************************************************************/
 char Game::GetSpace(int space) const
 {
     int row = (space - 1) / 3;
     int clm = (space - 1) % 3;
     return m_Board[row][clm];
 }
-
 
 /******************************************************************************
 * Entry: char diff
@@ -164,6 +171,14 @@ void Game::SetTracker(int track)
 	m_Tracker = track;
 }
 
+/******************************************************************************
+* Entry: int space, Player player
+*
+* Exit: Nothing
+*
+* Purpose: Sets claim token in chosen space
+*
+******************************************************************************/
 void Game::SetSpace(int space, Player player)
 {
     int row = (space - 1) / 3;
@@ -171,9 +186,8 @@ void Game::SetSpace(int space, Player player)
     m_Board[row][clm] = player.GetToken();
 }
 
-
 /******************************************************************************
-* Entry: int space
+* Entry: Nothing
 *
 * Exit: Bool result
 *
@@ -193,7 +207,7 @@ bool Game::TestDraw()
 }
 
 /******************************************************************************
-* Entry: char diff
+* Entry: Nothing
 *
 * Exit: Bool result
 *
@@ -247,6 +261,8 @@ bool Game::GameOver()
 ******************************************************************************/
 void Game::ClaimSpace(Player player, char input)
 {
+    Champion baseChamp;
+
     if (input >= '1' && input <= '9')
     {
         switch (input)
@@ -259,7 +275,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -274,7 +290,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -289,7 +305,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -304,7 +320,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -319,7 +335,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -334,7 +350,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -349,7 +365,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -364,7 +380,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -379,7 +395,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                Champion::ChallengeSpace;
+                
             }
             else
             {
@@ -475,26 +491,26 @@ void Game::PlayGame()
             cout << "Select token for player 1 (X or O): ";
             cin >> input;
 
-            Player player1(true, input, 0, 'W');
+            Player player1(true, input, 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.SetChampion(input);
+            player1.playerChamp.SetRole(input);
 
             // player 2 (AI)
-            Player player2(false, '\0', 0, 'B');
+            Player player2(false, '\0', 0);
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
             input = baseChamp.GenerateRNG(1, 3);
             if (input == 1)
             {
-                player2.SetChampion('W');
+                player2.SetRole('W');
             }
             else if (input == 2)
             {
-                player2.SetChampion('A');
+                player2.SetRole('A');
             }
             else
             {
-                player2.SetChampion('R');
+                player2.SetRole('R');
             }
 
         }
@@ -504,17 +520,17 @@ void Game::PlayGame()
             cout << "Select token for player 1 (X or O): ";
             cin >> input;
 
-            Player player1(true, input, 0, 'W');
+            Player player1(true, input, 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.SetChampion(input);
+            player1.SetRole(input);
 
             // player 2
-            Player player2(true, '\0', 0, 'W');
+            Player player2(true, '\0', 0);
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player2.SetChampion(input);
+            player2.SetRole(input);
         }
 
         // draw board
