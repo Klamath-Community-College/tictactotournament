@@ -23,7 +23,7 @@ class Player
 		bool GetPlayer() const;
 		char GetToken() const;
 		int GetWins() const;
-		Champion GetChampion() const;
+		Champion GetChampion();
 
 		// setters
 		void SetPlayer(bool player);

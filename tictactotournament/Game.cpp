@@ -494,7 +494,7 @@ void Game::PlayGame()
             Player player1(true, input, 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.playerChamp.SetRole(input);
+            player1.GetChampion().SetRole(input);
 
             // player 2 (AI)
             Player player2(false, '\0', 0);
@@ -502,15 +502,15 @@ void Game::PlayGame()
             input = baseChamp.GenerateRNG(1, 3);
             if (input == 1)
             {
-                player2.SetRole('W');
+                player2.GetChampion().SetRole('W');
             }
             else if (input == 2)
             {
-                player2.SetRole('A');
+                player2.GetChampion().SetRole('A');
             }
             else
             {
-                player2.SetRole('R');
+                player2.GetChampion().SetRole('R');
             }
 
         }
@@ -523,14 +523,14 @@ void Game::PlayGame()
             Player player1(true, input, 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.SetRole(input);
+            player1.GetChampion().SetRole(input);
 
             // player 2
             Player player2(true, '\0', 0);
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player2.SetRole(input);
+            player2.GetChampion().SetRole(input);
         }
 
         // draw board

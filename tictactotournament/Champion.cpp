@@ -364,16 +364,16 @@ void Champion::ChallengeSpace(Player defender, Player challenger, int space)
 {
 	int tempAttack = 0;
 
-	while (defender.Champion.GetHP != 0 || challenger.Champion.GetHP != 0)
+	while (defender.GetChampion().GetHP != 0 || challenger.GetChampion().GetHP != 0)
 	{
-		tempAttack = challenger.Champion.GetATT + GenerateRNG(1, 6);
-		tempAttack > defender.GetChampion.GetAC ? defender.GetChampion.GetHP -= challenger.GetChampion.GetDMG : 0;
+		tempAttack = challenger.GetChampion().GetATT + GenerateRNG(1, 6);
+		tempAttack > defender.GetChampion().GetAC ? defender.GetChampion().GetHP -= challenger.GetChampion().GetDMG : 0;
 
-		tempAttack = defender.GetChampion.GetATT + GenerateRNG(1, 6);
-		tempAttack > challenger.GetChampion.GetAC ? challenger.GetChampion.GetHP -= defender.GetChampion.GetDMG : 0;
+		tempAttack = defender.GetChampion().GetATT + GenerateRNG(1, 6);
+		tempAttack > challenger.GetChampion().GetAC ? challenger.GetChampion().GetHP -= defender.GetChampion().GetDMG : 0;
 	}
 
-	if (defender.Champion.GetHP == 0)
+	if (defender.GetChampion().GetHP == 0)
 	{
 		// set space to attacker's token
 	}

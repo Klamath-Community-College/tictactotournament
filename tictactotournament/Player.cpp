@@ -115,7 +115,10 @@ int Player::GetWins() const
 	return m_Wins;
 }
 
-
+Champion Player::GetChampion()
+{
+	return m_Champion;
+}
 
 /******************************************************************************
 * Entry: bool player
@@ -154,4 +157,9 @@ void Player::SetToken(char token)
 void Player::SetWins(int wins)
 {
 	m_Wins = wins;
+}
+
+void Player::SetChampion(Champion champ)
+{
+
 }
