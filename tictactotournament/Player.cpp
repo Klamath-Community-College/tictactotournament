@@ -115,6 +115,14 @@ int Player::GetWins() const
 	return m_Wins;
 }
 
+/******************************************************************************
+* Entry: Nothing
+*
+* Exit: Champion object
+*
+* Purpose: Returns champion object associated with player
+*
+******************************************************************************/
 Champion Player::GetChampion()
 {
 	return m_Champion;
@@ -159,6 +167,14 @@ void Player::SetWins(int wins)
 	m_Wins = wins;
 }
 
+/******************************************************************************
+* Entry: Champion champ
+*
+* Exit: Nothing
+*
+* Purpose: Because Troy wants uniformity
+*
+******************************************************************************/
 void Player::SetChampion(Champion champ)
 {
 
