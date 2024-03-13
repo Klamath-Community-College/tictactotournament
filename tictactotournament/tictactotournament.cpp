@@ -74,6 +74,7 @@ int main()
 
     bool exit = false;
     char input = '\0';
+    Game gameAccess;
 
     while (!exit)
     {
@@ -85,7 +86,7 @@ int main()
             switch (input)
             {
             case '1':
-                Game::PlayGame;
+                gameAccess.PlayGame();
                 break;
             case '2':
 

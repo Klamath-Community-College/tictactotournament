@@ -15,7 +15,7 @@ using std::endl;
 *
 ******************************************************************************/
 Game::Game() : m_Difficulty('E'), m_Countdown(3), m_Tracker(1)
-{	
+{
 }
 
 /******************************************************************************
@@ -29,9 +29,9 @@ Game::Game() : m_Difficulty('E'), m_Countdown(3), m_Tracker(1)
 ******************************************************************************/
 Game::Game(char diff, int count, int track) : m_Difficulty('E'), m_Countdown(3), m_Tracker(1)
 {
-	m_Difficulty = diff;
-	m_Countdown = count;
-	m_Tracker = track;
+    m_Difficulty = diff;
+    m_Countdown = count;
+    m_Tracker = track;
 }
 
 /******************************************************************************
@@ -44,9 +44,9 @@ Game::Game(char diff, int count, int track) : m_Difficulty('E'), m_Countdown(3),
 ******************************************************************************/
 Game::Game(Game& copy)
 {
-	m_Difficulty = copy.m_Difficulty;
-	m_Countdown = copy.m_Countdown;
-	m_Tracker = copy.m_Tracker;
+    m_Difficulty = copy.m_Difficulty;
+    m_Countdown = copy.m_Countdown;
+    m_Tracker = copy.m_Tracker;
 }
 
 /******************************************************************************
@@ -59,11 +59,11 @@ Game::Game(Game& copy)
 ******************************************************************************/
 Game Game::operator=(Game& rhs)
 {
-	m_Difficulty = rhs.m_Difficulty;
-	m_Countdown = rhs.m_Countdown;
-	m_Tracker = rhs.m_Tracker;
+    m_Difficulty = rhs.m_Difficulty;
+    m_Countdown = rhs.m_Countdown;
+    m_Tracker = rhs.m_Tracker;
 
-	return *this;
+    return *this;
 }
 
 /******************************************************************************
@@ -88,7 +88,7 @@ Game::~Game()
 ******************************************************************************/
 char Game::GetDifficulty() const
 {
-	return m_Difficulty;
+    return m_Difficulty;
 }
 
 /******************************************************************************
@@ -101,7 +101,7 @@ char Game::GetDifficulty() const
 ******************************************************************************/
 int Game::GetCountdown() const
 {
-	return m_Countdown;
+    return m_Countdown;
 }
 
 /******************************************************************************
@@ -114,7 +114,7 @@ int Game::GetCountdown() const
 ******************************************************************************/
 int Game::GetTracker() const
 {
-	return m_Tracker;
+    return m_Tracker;
 }
 
 /******************************************************************************
@@ -142,7 +142,7 @@ char Game::GetSpace(int space) const
 ******************************************************************************/
 void Game::SetDifficulty(char diff)
 {
-	m_Difficulty = diff;
+    m_Difficulty = diff;
 }
 
 /******************************************************************************
@@ -155,7 +155,7 @@ void Game::SetDifficulty(char diff)
 ******************************************************************************/
 void Game::SetCountdown(int count)
 {
-	m_Countdown = count;
+    m_Countdown = count;
 }
 
 /******************************************************************************
@@ -168,7 +168,7 @@ void Game::SetCountdown(int count)
 ******************************************************************************/
 void Game::SetTracker(int track)
 {
-	m_Tracker = track;
+    m_Tracker = track;
 }
 
 /******************************************************************************
@@ -217,7 +217,7 @@ bool Game::TestDraw()
 bool Game::GameOver()
 {
     bool result = false;
-   char gameDiff = GetDifficulty();
+    char gameDiff = GetDifficulty();
 
     if (GetSpace(0) == GetSpace(1) == GetSpace(2) || GetSpace(3) == GetSpace(4) == GetSpace(5) || GetSpace(6) == GetSpace(7) == GetSpace(8))
     {
@@ -252,7 +252,7 @@ bool Game::GameOver()
 
 
 /******************************************************************************
-* Entry: char indicating player choice                          
+* Entry: char indicating player choice
 *
 * Exit: no return
 *
@@ -268,14 +268,14 @@ void Game::ClaimSpace(Player player, char input)
         switch (input)
         {
         case '1':
-            if (GetSpace(input -1) == '1')
+            if (GetSpace(input - 1) == '1')
             {
                 SetSpace(input - 1, player);
             }
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -290,7 +290,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -305,7 +305,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -320,7 +320,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -335,7 +335,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -350,7 +350,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -365,7 +365,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -380,7 +380,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -395,7 +395,7 @@ void Game::ClaimSpace(Player player, char input)
             else if (GetSpace(input - 1) != player.GetToken())
             {
                 // call PVP function
-                
+
             }
             else
             {
@@ -419,13 +419,13 @@ void Game::ClaimSpace(Player player, char input)
 * Purpose: Displays current state of game using gameBoard array
 *
 ******************************************************************************/
-void Game::DisplayBoard(char* ptr)
+void Game::DisplayBoard(char m_Board)
 {
     for (int row = 0; row < 3; row++)                                            // loop for displaying rows
     {
         for (int column = 0; column < 3; column++)                               // loop for displaying columns
         {
-            cout << ' ' << *(ptr + column) << ' ';                                 // print array contents centered in space
+            cout << ' ' << (m_Board + column) << ' ';                                 // print array contents centered in space
 
             if (column < 3 - 1)                                                    // conditional for printing vertical separators
             {
@@ -439,7 +439,7 @@ void Game::DisplayBoard(char* ptr)
             cout << "\n-----------\n";
         }
 
-        ptr = ptr + 3;                                                             // increment board_ptr to next row of columns
+        m_Board = m_Board + 3;                                                             // increment board_ptr to next row of columns
     }
 }
 
@@ -450,7 +450,6 @@ void Game::PlayGame()
     bool continuePlaying = true;
     bool endGame = false;
     bool fin = false;
-    Game newGame;
     Player player1;
     Player player2;
     Champion baseChamp;
@@ -485,7 +484,7 @@ void Game::PlayGame()
         numPlayers = input;
 
         // set player options
-        if(numPlayers == 1)
+        if (numPlayers == 1)
         {
             // player 1
             cout << "Select token for player 1 (X or O): ";
@@ -534,7 +533,7 @@ void Game::PlayGame()
         }
 
         // draw board
-        DisplayBoard;
+        DisplayBoard();
 
         // choose space
         while (endGame != true)

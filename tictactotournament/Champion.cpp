@@ -360,19 +360,19 @@ void Champion::SetHP(int hp)
 	m_HP = hp;
 }
 
-void Champion::ChallengeSpace(Player defender, Player challenger, int space)
+void ChallengeSpace(Player defender, Player challenger, int space)
 {
 	int tempAttack = 0;
 
 	while (defender.GetChampion().GetHP() != 0 || challenger.GetChampion().GetHP() != 0)
 	{
-		tempAttack = challenger.GetChampion().GetATT() + GenerateRNG(1, 6);
-		tempAttack > defender.GetChampion().GetAC() ? defender.GetChampion().SetHP(defender.GetChampion().GetHP() - 
-					challenger.GetChampion().GetDMG()) : defender.GetChampion().SetHP(defender.GetChampion().GetHP() - 0);
+		tempAttack = challenger.GetChampion().GetATT() + challenger.GetChampion().GenerateRNG(1, 6);
+		tempAttack > defender.GetChampion().GetAC() ? defender.GetChampion().SetHP(defender.GetChampion().GetHP() -
+			challenger.GetChampion().GetDMG()) : defender.GetChampion().SetHP(defender.GetChampion().GetHP() - 0);
 
-		tempAttack = defender.GetChampion().GetATT() + GenerateRNG(1, 6);
+		tempAttack = defender.GetChampion().GetATT() + defender.GetChampion().GenerateRNG(1, 6);
 		tempAttack > challenger.GetChampion().GetAC() ? challenger.GetChampion().SetHP(challenger.GetChampion().GetHP() -
-					defender.GetChampion().GetDMG()) : challenger.GetChampion().SetHP(challenger.GetChampion().GetHP() - 0);
+			defender.GetChampion().GetDMG()) : challenger.GetChampion().SetHP(challenger.GetChampion().GetHP() - 0);
 	}
 
 	if (defender.GetChampion().GetHP() == 0)
