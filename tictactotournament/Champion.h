@@ -1,4 +1,6 @@
 #pragma once
+#include "Game.h"
+#include "Player.h"
 
 // Class for player pvp over claimed space
 
@@ -48,7 +50,7 @@ public:
 	int GetATT() const;
 	int GetDMG() const;
 	int GetAC() const;
-	int GetHP()const;
+	int GetHP() const;
 
 	// setters
 	void SetPower(int power);

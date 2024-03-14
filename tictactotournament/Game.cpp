@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Player.h"
-#include "Champion.h"
 #include <iostream>
 using std::cout;
 using std::cin;
@@ -419,15 +418,15 @@ void Game::ClaimSpace(Player player, char input)
 * Purpose: Displays current state of game using gameBoard array
 *
 ******************************************************************************/
-void Game::DisplayBoard(char m_Board)
+void Game::DisplayBoard()
 {
     for (int row = 0; row < 3; row++)                                            // loop for displaying rows
     {
         for (int column = 0; column < 3; column++)                               // loop for displaying columns
         {
-            cout << ' ' << (m_Board + column) << ' ';                                 // print array contents centered in space
+            cout << ' ' << (GetSpace(column)) << ' ';                            // print array contents centered in space
 
-            if (column < 3 - 1)                                                    // conditional for printing vertical separators
+            if (column < 3 - 1)                                                  // conditional for printing vertical separators
             {
                 cout << '|';
             }
@@ -438,8 +437,6 @@ void Game::DisplayBoard(char m_Board)
         {
             cout << "\n-----------\n";
         }
-
-        m_Board = m_Board + 3;                                                             // increment board_ptr to next row of columns
     }
 }
 

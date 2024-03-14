@@ -33,6 +33,6 @@ public:
 	bool TestDraw();
 	bool GameOver();
 	void ClaimSpace(Player player, char input);
-	void DisplayBoard(char m_Board);
+	void DisplayBoard();
 	void PlayGame();
 };
