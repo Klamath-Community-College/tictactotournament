@@ -21,16 +21,16 @@
 class Champion
 {
 	private:
-		int m_Power;
-		int m_Mental;
-		int m_Agility;
-		int m_Health;
-		int m_ATT;				// Attack bonus
-		int m_DMG;				// Damage bonus
-		int m_AC;				// Armor class
-		int m_HP;				// Health Pool
-		int m_TotalWins;
-		char m_Role;			// W-arrior, A-dept, R-ogue
+		int m_Power = 0;
+		int m_Mental = 0;
+		int m_Agility = 0;
+		int m_Health = 0;
+		int m_ATT = 0;				// Attack bonus
+		int m_DMG = 0;				// Damage bonus
+		int m_AC = 0;				// Armor class
+		int m_HP = 0;				// Health Pool
+		int m_TotalWins = 0;
+		char m_Role = '\0';			// W-arrior, A-dept, R-ogue
 
 	public:
 		// manager functions
@@ -64,6 +64,5 @@ class Champion
 		void SetAC(int ac);
 		void SetHP(int hp);
 
-		//void ChallengeSpace(Player challenger, Player defender, int space);
 		int GenerateRNG(int min, int max);
 };

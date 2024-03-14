@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Player.h"
+#include <cctype>
 #include <iostream>
 using std::cout;
 using std::cin;
@@ -195,6 +196,8 @@ void Game::SetSpace(int space, Player player)
 ******************************************************************************/
 bool Game::TestDraw()
 {
+    // space is comparin int to char
+
     for (int space = 1; space < 10; space++)
     { // use space # not array indecies
         if (GetSpace(space) == space)
@@ -411,7 +414,7 @@ void Game::ClaimSpace(Player playerOn, Player playerOff, char input)
 
 
 /******************************************************************************
-* Entry: Pointer to gameBoard array (board_ptr)
+* Entry: Nothing
 *
 * Exit: No return
 *
@@ -420,24 +423,16 @@ void Game::ClaimSpace(Player playerOn, Player playerOff, char input)
 ******************************************************************************/
 void Game::DisplayBoard()
 {
-    for (int row = 0; row < 3; row++)                                            // loop for displaying rows
-    {
-        for (int column = 0; column < 3; column++)                               // loop for displaying columns
-        {
-            cout << ' ' << (GetSpace(column)) << ' ';                            // print array contents centered in space
-
-            if (column < 3 - 1)                                                  // conditional for printing vertical separators
-            {
-                cout << '|';
-            }
-
-        }
-
-        if (row < 3 - 1)                                                         // conditional for printing horizontal separators
-        {
-            cout << "\n-----------\n";
-        }
-    }
+    // insert blank space
+    cout << "\n\n" << endl;
+    // display row one and separator
+    cout << ' ' << GetSpace(1) << ' ' << '|' << ' ' << GetSpace(2) << ' ' << '|' << ' ' << GetSpace(3);
+    cout << "\n-----------\n";
+    // display row two and separator
+    cout << ' ' << GetSpace(4) << ' ' << '|' << ' ' << GetSpace(5) << ' ' << '|' << ' ' << GetSpace(6);
+    cout << "\n-----------\n";
+    // display row three
+    cout << ' ' << GetSpace(7) << ' ' << '|' << ' ' << GetSpace(8) << ' ' << '|' << ' ' << GetSpace(9) << '\n' << endl;
 }
 
 void Game::PlayGame(bool tourney)
@@ -459,7 +454,7 @@ void Game::PlayGame(bool tourney)
         cin >> input;
 
         // create game, set difficulty
-        if (input == 'N')
+        if (toupper(input) == 'N')
         {
             Game newGame();
             SetDifficulty('N');
@@ -470,7 +465,7 @@ void Game::PlayGame(bool tourney)
             }
             
         }
-        else if (input == 'H')
+        else if (toupper(input) == 'H')
         {
             Game newgame();
             SetDifficulty('H');
@@ -494,20 +489,20 @@ void Game::PlayGame(bool tourney)
             cout << "Select token for player 1 (X or O): ";
             cin >> input;
 
-            Player player1(true, input, 0);
+            Player player1(true, toupper(input), 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.GetChampion().SetRole(input);
+            player1.GetChampion().SetRole(toupper(input));
 
             // player 2 (AI)
             Player player2(false, '\0', 0);
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
             input = baseChamp.GenerateRNG(1, 3);
-            if (input == 1)
+            if (toupper(input) == 1)
             {
                 player2.GetChampion().SetRole('W');
             }
-            else if (input == 2)
+            else if (toupper(input) == 2)
             {
                 player2.GetChampion().SetRole('A');
             }
@@ -523,17 +518,17 @@ void Game::PlayGame(bool tourney)
             cout << "Select token for player 1 (X or O): ";
             cin >> input;
 
-            Player player1(true, input, 0);
+            Player player1(true, toupper(input), 0);
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player1.GetChampion().SetRole(input);
+            player1.GetChampion().SetRole(toupper(input));
 
             // player 2
             Player player2(true, '\0', 0);
             player1.GetToken() == 'X' ? player2.SetToken('O') : player2.SetToken('X');
             cout << "Select your champion - (W)arrior, (Adept) or (R)ogue: ";
             cin >> input;
-            player2.GetChampion().SetRole(input);
+            player2.GetChampion().SetRole(toupper(input));
         }
 
         // draw board

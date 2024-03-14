@@ -228,17 +228,17 @@ void DisplayMenu_Scores()
 
     char input = GetInput();
 
-    while (input != '3')
+    if (input != '3')
     {
         if (input == '1')
         {
             // file i/o for player wins
-            cout << "Player wins will display after games have been played." << endl;
+            cout << "Player wins will display after feature developed." << endl;
         }
         else if (input == '2')
         {
             // file i/o for avatar wins
-            cout << "Champion wins will display after games have been played." << endl;
+            cout << "Champion wins will display after feature developed." << endl;
         }
         else
         {

@@ -48,6 +48,18 @@ Champion::Champion(int power, int mental, int agility, int health, int wins) : m
 	m_Agility = agility;
 	m_Health = health;
 	m_TotalWins = wins;
+
+	// if warrior apply power to damage
+	m_Role == 'W' ? m_DMG = (m_Power - 10) / 2 : m_DMG = 0;
+
+	// if adept apply mental to attack
+	m_Role == 'A' ? m_ATT = (m_Mental - 10) / 2 : m_ATT = 0;
+
+	// if rogue apply agility to armor twice, if not apply once
+	m_Role == 'R' ? m_AC = ((m_Agility - 10) / 2) * 2 : (m_Agility - 10) / 2;
+
+	// initialize health pool and adjust for health bonus
+	m_HP = 8 + ((m_Health - 10) / 2);
 }
 
 /******************************************************************************
@@ -66,6 +78,10 @@ Champion::Champion(Champion& copy)
 	m_Health = copy.m_Health;
 	m_TotalWins = copy.m_TotalWins;
 	m_Role = copy.m_Role;
+	m_ATT = copy.m_ATT;
+	m_DMG = copy.m_DMG;
+	m_AC = copy.m_AC;
+	m_HP = copy.m_HP;
 }
 
 /******************************************************************************
@@ -359,29 +375,6 @@ void Champion::SetHP(int hp)
 {
 	m_HP = hp;
 }
-
-//void Champion::ChallengeSpace(Player challenger, Player defender, int space)
-//{
-//	int tempAttack = 0;
-//
-//	while (challenger.GetChampion().GetHP() != 0 || defender.GetChampion().GetHP() != 0)
-//	{
-//		tempAttack = challenger.GetChampion().GetATT() + challenger.GetChampion().GenerateRNG(1, 20);
-//		tempAttack > defender.GetChampion().GetAC() ? defender.GetChampion().SetHP(defender.GetChampion().GetHP() -
-//			(challenger.GetChampion().GenerateRNG(1, 6) + challenger.GetChampion().GetDMG())) : 
-//			defender.GetChampion().SetHP(defender.GetChampion().GetHP() - 0);
-//
-//		tempAttack = defender.GetChampion().GetATT() + defender.GetChampion().GenerateRNG(1, 20);
-//		tempAttack > challenger.GetChampion().GetAC() ? challenger.GetChampion().SetHP(challenger.GetChampion().GetHP() -
-//			(defender.GetChampion().GenerateRNG(1, 6) + defender.GetChampion().GetDMG())) : 
-//			challenger.GetChampion().SetHP(challenger.GetChampion().GetHP() - 0);
-//	}
-//
-//	if (defender.GetChampion().GetHP() < 0)
-//	{
-//		// set space to attacker's token
-//	}
-//}
 
 int Champion::GenerateRNG(int min, int max)
 {
