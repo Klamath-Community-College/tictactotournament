@@ -75,6 +75,7 @@ int main()
     bool exit = false;
     char input = '\0';
     Game gameAccess;
+    bool tourney = false;
 
     while (!exit)
     {
@@ -86,10 +87,11 @@ int main()
             switch (input)
             {
             case '1':
-                gameAccess.PlayGame();
+                gameAccess.PlayGame(tourney);
                 break;
             case '2':
-
+                tourney = true;
+                gameAccess.PlayGame(tourney);
                 break;
             case '3':
                 DisplayMenu_Scores();

@@ -258,7 +258,7 @@ bool Game::GameOver()
 * Purpose: Compares player choice to board to see if move is valid
 *
 ******************************************************************************/
-void Game::ClaimSpace(Player player, char input)
+void Game::ClaimSpace(Player playerOn, Player playerOff, char input)
 {
     Champion baseChamp;
 
@@ -269,9 +269,9 @@ void Game::ClaimSpace(Player player, char input)
         case '1':
             if (GetSpace(input - 1) == '1')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -284,9 +284,9 @@ void Game::ClaimSpace(Player player, char input)
         case '2':
             if (GetSpace(input - 1) == '2')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -299,9 +299,9 @@ void Game::ClaimSpace(Player player, char input)
         case '3':
             if (GetSpace(input - 1) == '3')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -314,9 +314,9 @@ void Game::ClaimSpace(Player player, char input)
         case '4':
             if (GetSpace(input - 1) == '4')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -329,9 +329,9 @@ void Game::ClaimSpace(Player player, char input)
         case '5':
             if (GetSpace(input - 1) == '5')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -344,9 +344,9 @@ void Game::ClaimSpace(Player player, char input)
         case '6':
             if (GetSpace(input - 1) == '6')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -359,9 +359,9 @@ void Game::ClaimSpace(Player player, char input)
         case '7':
             if (GetSpace(input - 1) == '7')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -374,9 +374,9 @@ void Game::ClaimSpace(Player player, char input)
         case '8':
             if (GetSpace(input - 1) == '8')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -389,9 +389,9 @@ void Game::ClaimSpace(Player player, char input)
         case '9':
             if (GetSpace(input - 1) == '9')
             {
-                SetSpace(input - 1, player);
+                SetSpace(input - 1, playerOn);
             }
-            else if (GetSpace(input - 1) != player.GetToken())
+            else if (GetSpace(input - 1) != playerOn.GetToken())
             {
                 // call PVP function
 
@@ -440,7 +440,7 @@ void Game::DisplayBoard()
     }
 }
 
-void Game::PlayGame()
+void Game::PlayGame(bool tourney)
 {
     char input = '\0';
 
@@ -464,14 +464,21 @@ void Game::PlayGame()
             Game newGame();
             SetDifficulty('N');
             SetCountdown(3);
-            SetTracker(1);
+            if (tourney == true)
+            {
+                SetTracker(GetTracker() + 1);
+            }
+            
         }
         else if (input == 'H')
         {
             Game newgame();
             SetDifficulty('H');
             SetCountdown(0);
-            SetTracker(1);
+            if (tourney == true)
+            {
+                SetTracker(GetTracker() + 1);
+            }
         }
 
         //set number of players
@@ -540,7 +547,7 @@ void Game::PlayGame()
             cin >> input;
 
             // check space
-            ClaimSpace(player1, input);
+            ClaimSpace(player1, player2, input);
 
             // check game
             fin = GameOver();
@@ -550,7 +557,7 @@ void Game::PlayGame()
             cin >> input;
 
             // check space
-            ClaimSpace(player2, input);
+            ClaimSpace(player2, player1, input);
 
             // check game
             fin = GameOver();
