@@ -5,10 +5,12 @@
 class Game
 {
 	private:
+		char m_Board[3][3] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
 		char m_Difficulty;		// to set game type
 		int m_Countdown;		// for PVP option
 		int m_Tracker;			// for tracking consecutive games
-		char m_Board[3][3] = { {'1', '2', '3'}, {'4', '5', '6'}, {'7', '8', '9'} };
+		Player player1;
+		Player player2;
 
 	public:
 		// manager functions
@@ -35,4 +37,5 @@ class Game
 		void ClaimSpace(Player playerOn, Player playerOff, char input);
 		void DisplayBoard();
 		void PlayGame(bool tourney);
+		void SetOptions(Game game, bool tourney);
 };

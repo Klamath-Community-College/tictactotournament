@@ -181,7 +181,7 @@ void Player::SetChampion(Champion champ)
 
 }
 
-void Player::ChallengeSpace(Player challenger, Player defender, int space)
+void Player::ChallengeSpace(Player challenger, Player defender, char space)
 {
 	int tempAttack = 0;
 

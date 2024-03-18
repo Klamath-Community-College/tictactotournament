@@ -32,5 +32,5 @@ class Player
 		void SetWins(int wins);
 		void SetChampion(Champion champ);
 
-		void ChallengeSpace(Player challenger, Player defender, int space);
+		void ChallengeSpace(Player challenger, Player defender, char space);
 };
