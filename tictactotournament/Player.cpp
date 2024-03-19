@@ -1,6 +1,9 @@
 #include "Game.h"
 #include "Player.h"
 #include "Champion.h"
+#include <iostream>
+using std::cout;
+using std::endl;
 
 /******************************************************************************
 * Entry: Nothing
@@ -201,5 +204,11 @@ void Player::ChallengeSpace(Player challenger, Player defender, char space)
 	if (defender.GetChampion().GetHP() < 0)
 	{
 		// set space to attacker's token
+		SetSpace(space, challenger);
+		cout << "The attacker has won and space is claimed!" << endl;
+	}
+	else
+	{
+		cout << "The defender has won and space is kept!" << endl;
 	}
 }

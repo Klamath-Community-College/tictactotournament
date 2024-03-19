@@ -129,12 +129,18 @@
   <ItemGroup>
     <ClCompile Include="Champion.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="HighScore.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="tictactotournament.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Champion.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="HighScore.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

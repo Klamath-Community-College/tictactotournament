@@ -8,6 +8,9 @@ using std::endl;
 #include "Game.h"
 #include "Player.h"
 #include "Champion.h"
+#include "Node.h"
+#include "HighScore.h"
+#include "LinkedList.h"
 
 #include <crtdbg.h>
 
@@ -23,59 +26,17 @@ int main()
     // Run this program using "Start Debugging"
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-    /**********************************************************************************
-    * Game Logic
-    *
-    *   Splash screen?
-    *   Main Menu
-    *       1. Play
-    *           1. New Game
-    *               class Player
-    *                   -> token, avatar, #wins, AI, name?
-    *               class game/board
-    *                   -> board, Difficulty, counter, player1, player2
-    *           2. Continue Playing
-    *                   -> link list for consecutive games?
-    *           3. Back
-    *       2. Instructions
-    *           1. How to Play
-    *                   Easy (non-combat), Normal (combat w/counter), Hard (immediate combat)
-    *           2. New Feature (combat)
-    *                   -> stats array, class differential, #wins
-    *                   -> AI as unique?
-    *           3. Back
-    *       3. High Scores
-    *           1. Player (#wins)
-    *           2. Avatar (#wins/level?)
-    *           3. Back
-    *       4. Exit
-    *
-    *
-    * Combat Logic
-    *       Combat(int attacker, int defender, int space)       // change int to Player?
-    *       {
-    *           while (attacker.health != 0 || defender.health != 0)
-    *           {
-    *               attacker.att (rng+stat) > defender.def (stat) ? def.health -= damage : def.health -= 0
-    *               defender.att (rng+stat) > attacker.def (stat) ? att.health -= damage : att.health -= 0
-    *           }
-    *
-    *           if (attacker.health != 0)
-    *           {
-    *               space = attacker.token
-    *               cout << "The attacker has won and space is claimed!" << endl;
-    *           }
-    *           else
-    *           {
-    *               cout << "The defender has won and space is kept!" << endl;
-    *           }
-    *
-    ***********************************************************************************/
 
     bool exit = false;
     char input = '\0';
     Game gameAccess;
     bool tourney = false;
+    LinkedList playerScores;
+    // figure out where to put function for recording score
+    //
+    //      HighScore* winnerScore = new HighScore(input, wins, champion);
+    //      playerScores.InsertOrdered(winnerScore);
+    //
 
     while (!exit)
     {
